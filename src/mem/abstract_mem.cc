@@ -47,6 +47,10 @@
 #include "cpu/thread_context.hh"
 #include "debug/LLSC.hh"
 #include "debug/MemoryAccess.hh"
+
+#include "debug/Special.hh"
+#include "debug/DRAM.hh"
+
 #include "mem/packet_access.hh"
 #include "sim/system.hh"
 
@@ -462,6 +466,13 @@ AbstractMemory::access(PacketPtr pkt)
                 pkt->writeData(host_addr);
                 DPRINTF(MemoryAccess, "%s write due to %s\n",
                         __func__, pkt->print());
+                
+               // DPRINTF(DRAM, "%s write due to %s\n",
+                 //       __func__, pkt->print());
+                 DPRINTF(Special, "%s write due to %s\n",
+                         __func__, pkt->print());
+
+                    
             }
             assert(!pkt->req->isInstFetch());
             TRACE_PACKET("Write");
@@ -497,11 +508,11 @@ AbstractMemory::functionalAccess(PacketPtr pkt)
         TRACE_PACKET("Write");
         pkt->makeResponse();
     } else if (pkt->isPrint()) {
-        Packet::PrintReqState *prs =
+         Packet::PrintReqState *prs =
             dynamic_cast<Packet::PrintReqState*>(pkt->senderState);
         assert(prs);
-        // Need to call printLabels() explicitly since we're not going
-        // through printObj().
+        //Need to call printLabels() explicitly since we're not going
+        //through printObj().
         prs->printLabels();
         // Right now we just print the single byte at the specified address.
         ccprintf(prs->os, "%s%#x\n", prs->curPrefix(), *host_addr);

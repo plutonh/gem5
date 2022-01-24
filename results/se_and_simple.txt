@@ -1,0 +1,158 @@
+13c13
+< children=clk_domain cpu cpu_clk_domain cpu_voltage_domain dvfs_handler mem_ctrls membus redirect_paths0 redirect_paths1 redirect_paths2 voltage_domain workload
+---
+> children=clk_domain cpu dvfs_handler mem_ctrl membus workload
+19c19
+< mem_mode=atomic
+---
+> mem_mode=timing
+21c21
+< memories=system.mem_ctrls.dram
+---
+> memories=system.mem_ctrl.dram
+26c26
+< redirect_paths=system.redirect_paths0 system.redirect_paths1 system.redirect_paths2
+---
+> redirect_paths=
+40c40
+< system_port=system.membus.cpu_side_ports[0]
+---
+> system_port=system.membus.cpu_side_ports[2]
+43a44
+> children=voltage_domain
+48c49,54
+< voltage_domain=system.voltage_domain
+---
+> voltage_domain=system.clk_domain.voltage_domain
+> 
+> [system.clk_domain.voltage_domain]
+> type=VoltageDomain
+> eventq_index=0
+> voltage=1.0
+51c57
+< type=AtomicSimpleCPU
+---
+> type=TimingSimpleCPU
+55,56c61,62
+< clk_domain=system.cpu_clk_domain
+< cpu_id=0
+---
+> clk_domain=system.clk_domain
+> cpu_id=-1
+75,76d80
+< simulate_data_stalls=false
+< simulate_inst_stalls=false
+82d85
+< width=1
+84,85c87,88
+< dcache_port=system.membus.cpu_side_ports[2]
+< icache_port=system.membus.cpu_side_ports[1]
+---
+> dcache_port=system.membus.cpu_side_ports[1]
+> icache_port=system.membus.cpu_side_ports[0]
+163c166
+< clk_domain=system.cpu_clk_domain
+---
+> clk_domain=system.clk_domain
+170d172
+< port=system.membus.cpu_side_ports[4]
+195c197
+< clk_domain=system.cpu_clk_domain
+---
+> clk_domain=system.clk_domain
+202d203
+< port=system.membus.cpu_side_ports[3]
+237c238
+< clk_domain=system.cpu_clk_domain
+---
+> clk_domain=system.clk_domain
+244d244
+< port=system.membus.cpu_side_ports[6]
+269c269
+< clk_domain=system.cpu_clk_domain
+---
+> clk_domain=system.clk_domain
+276d275
+< port=system.membus.cpu_side_ports[5]
+304c303
+< cmd=./mibench/automotive/qsort/qsort_small ./mibench/automotive/qsort/input_small.dat
+---
+> cmd=/home/youri/project/gem5/configs/learning_gem5/part1/../../../tests/test-progs/hello/bin/arm/linux/hello
+312,313c311,312
+< executable=./mibench/automotive/qsort/qsort_small
+< gid=1005
+---
+> executable=
+> gid=100
+327,339d325
+< [system.cpu_clk_domain]
+< type=SrcClockDomain
+< clock=500
+< domain_id=-1
+< eventq_index=0
+< init_perf_level=0
+< voltage_domain=system.cpu_voltage_domain
+< 
+< [system.cpu_voltage_domain]
+< type=VoltageDomain
+< eventq_index=0
+< voltage=1.0
+< 
+348c334
+< [system.mem_ctrls]
+---
+> [system.mem_ctrl]
+353c339
+< dram=system.mem_ctrls.dram
+---
+> dram=system.mem_ctrl.dram
+359c345
+< power_state=system.mem_ctrls.power_state
+---
+> power_state=system.mem_ctrl.power_state
+374c360
+< [system.mem_ctrls.dram]
+---
+> [system.mem_ctrl.dram]
+424c410
+< power_state=system.mem_ctrls.dram.power_state
+---
+> power_state=system.mem_ctrl.dram.power_state
+458c444
+< [system.mem_ctrls.dram.power_state]
+---
+> [system.mem_ctrl.dram.power_state]
+468c454
+< [system.mem_ctrls.power_state]
+---
+> [system.mem_ctrl.power_state]
+498,499c484,485
+< cpu_side_ports=system.system_port system.cpu.icache_port system.cpu.dcache_port system.cpu.mmu.itb_walker.port system.cpu.mmu.dtb_walker.port system.cpu.mmu.stage2_itb_walker.port system.cpu.mmu.stage2_dtb_walker.port
+< mem_side_ports=system.mem_ctrls.port
+---
+> cpu_side_ports=system.cpu.icache_port system.cpu.dcache_port system.system_port
+> mem_side_ports=system.mem_ctrl.port
+517,539d502
+< 
+< [system.redirect_paths0]
+< type=RedirectPath
+< app_path=/proc
+< eventq_index=0
+< host_paths=m5out/fs/proc
+< 
+< [system.redirect_paths1]
+< type=RedirectPath
+< app_path=/sys
+< eventq_index=0
+< host_paths=m5out/fs/sys
+< 
+< [system.redirect_paths2]
+< type=RedirectPath
+< app_path=/tmp
+< eventq_index=0
+< host_paths=m5out/fs/tmp
+< 
+< [system.voltage_domain]
+< type=VoltageDomain
+< eventq_index=0
+< voltage=1.0

@@ -140,6 +140,8 @@ DebugFlag('HMCController')
 DebugFlag('SerialLink')
 DebugFlag('TokenPort')
 
+DebugFlag('Special')
+
 DebugFlag("MemChecker")
 DebugFlag("MemCheckerMonitor")
 DebugFlag("QOS")
