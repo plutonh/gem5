@@ -44,9 +44,9 @@
 #include "base/cprintf.hh"
 #include "base/trace.hh"
 #include "debug/DRAM.hh"
-
+//YOURI
 #include "debug/Special.hh"
-
+//YOURI_END
 #include "debug/DRAMPower.hh"
 #include "debug/DRAMState.hh"
 #include "debug/NVM.hh"
@@ -588,12 +588,29 @@ DRAMInterface::doBurstAccess(MemPacket* mem_pkt, Tick next_burst_at,
 
     // Save rank of current access
     activeRank = mem_pkt->rank;
-    DPRINTF(Special, "%s from %s of size %i on address %#x\n",
-            __func__, system()->getRequestorName(mem_pkt->requestorId()),
-            size(), mem_pkt->getAddr());
+    //YOURI
+    std::string memoryCmd = mem_pkt->isRead() ? "RD" : "WR";
+    DPRINTF(Special, "interface cmd: %s from %s, mem_pkt address: %#x\n",
+            memoryCmd, system()->getRequestorName(mem_pkt->requestorId()),
+            mem_pkt->getAddr());
+
+
+    //         // DRAMPower trace command to be written
+    // std::string mem_cmd = mem_pkt->isRead() ? "RD" : "WR";
+
+    // // MemCommand required for DRAMPower library
+    // MemCommand::cmds command = (mem_cmd == "RD") ? MemCommand::RD :
+    //                                                MemCommand::WR;
+
+
+
+    // DPRINTF(Special, "%s from %s of size %i on address %#x, mem_cmd: %s\n",
+    //         cmdString(), system()->getRequestorName(mem_pkt->requestorId()),
+    //         size(), mem_pkt->getAddr(),mem_cmd);
     // If this is a write, we also need to respect the write recovery
     // time before a precharge, in the case of a read, respect the
     // read to precharge constraint
+    //YOURI_END
     bank_ref.preAllowedAt = std::max(bank_ref.preAllowedAt,
                                  mem_pkt->isRead() ? cmd_at + tRTP :
                                  mem_pkt->readyTime + tWR);

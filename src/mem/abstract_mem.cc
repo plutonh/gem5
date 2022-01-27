@@ -47,10 +47,10 @@
 #include "cpu/thread_context.hh"
 #include "debug/LLSC.hh"
 #include "debug/MemoryAccess.hh"
-
+//YOURI
 #include "debug/Special.hh"
 #include "debug/DRAM.hh"
-
+//YOURI_END
 #include "mem/packet_access.hh"
 #include "sim/system.hh"
 
@@ -372,6 +372,9 @@ tracePacket(System *sys, const char *label, PacketPtr pkt)
             label, sys->getRequestorName(pkt->req->requestorId()),
             size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
     DDUMP(MemoryAccess, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+    //YOURI
+    DDUMP(Special, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+    //YOURI_END
 }
 
 #   define TRACE_PACKET(A) tracePacket(system(), A, pkt)
@@ -466,12 +469,12 @@ AbstractMemory::access(PacketPtr pkt)
                 pkt->writeData(host_addr);
                 DPRINTF(MemoryAccess, "%s write due to %s\n",
                         __func__, pkt->print());
-                
+                //YOURI
                // DPRINTF(DRAM, "%s write due to %s\n",
                  //       __func__, pkt->print());
                  //DPRINTF(Special, "%s write due to %s\n",
                         // __func__, pkt->print());
-
+                //YOURI_END
                     
             }
             assert(!pkt->req->isInstFetch());

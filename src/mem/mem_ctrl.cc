@@ -44,8 +44,9 @@
 #include "debug/DRAM.hh"
 #include "debug/Drain.hh"
 #include "debug/MemCtrl.hh"
+//YOURI
 #include "debug/Special.hh"
-
+//YOURI_END
 #include "debug/NVM.hh"
 #include "debug/QOS.hh"
 #include "mem/mem_interface.hh"
@@ -831,8 +832,15 @@ MemCtrl::doBurstAccess(MemPacket* mem_pkt)
         std::vector<MemPacketQueue>& queue = selQueue(mem_pkt->isRead());
         std::tie(cmd_at, nextBurstAt) =
                  dram->doBurstAccess(mem_pkt, nextBurstAt, queue);
+        //YOURI
+        std::string memoryCmd = mem_pkt->isRead() ? "RD" : "WR";
+        DPRINTF(Special, "mem_ctrl cmd: %s from %s, mem_pkt address: %#x rank/bank/row %d %d %d\n",
+            memoryCmd, system()->getRequestorName(mem_pkt->requestorId()),
+            mem_pkt->getAddr(),mem_pkt->rank,mem_pkt->bank,mem_pkt->row);
+        //DDUMP(Special, mem_pkt->getConstPtr<uint8_t>(), mem_pkt->getSize());
         //DPRINTF(Special, "update addr %#x, rank/bank/row %d %d %d\n",
         //    mem_pkt->addr, mem_pkt->rank, mem_pkt->bank, mem_pkt->row);
+        //YOURI_END
         // Update timing for NVM ranks if NVM is configured on this channel
         if (nvm)
             nvm->addRankToRankDelay(cmd_at);
