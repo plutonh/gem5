@@ -44,6 +44,9 @@
 #include "base/cprintf.hh"
 #include "base/trace.hh"
 #include "debug/DRAM.hh"
+
+#include "debug/Special.hh"
+
 #include "debug/DRAMPower.hh"
 #include "debug/DRAMState.hh"
 #include "debug/NVM.hh"
@@ -585,7 +588,9 @@ DRAMInterface::doBurstAccess(MemPacket* mem_pkt, Tick next_burst_at,
 
     // Save rank of current access
     activeRank = mem_pkt->rank;
-
+    DPRINTF(Special, "%s from %s of size %i on address %#x\n",
+            __func__, system()->getRequestorName(mem_pkt->requestorId()),
+            size(), mem_pkt->getAddr());
     // If this is a write, we also need to respect the write recovery
     // time before a precharge, in the case of a read, respect the
     // read to precharge constraint
@@ -1819,7 +1824,7 @@ DRAMInterface::Rank::updatePowerStats()
 void
 DRAMInterface::Rank::computeStats()
 {
-    DPRINTF(DRAM,"Computing stats due to a dump callback\n");
+    DPRINTF(DRAM,"\n");
 
     // Update the stats
     updatePowerStats();

@@ -469,8 +469,8 @@ AbstractMemory::access(PacketPtr pkt)
                 
                // DPRINTF(DRAM, "%s write due to %s\n",
                  //       __func__, pkt->print());
-                 DPRINTF(Special, "%s write due to %s\n",
-                         __func__, pkt->print());
+                 //DPRINTF(Special, "%s write due to %s\n",
+                        // __func__, pkt->print());
 
                     
             }
