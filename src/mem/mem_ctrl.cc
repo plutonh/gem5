@@ -48,7 +48,9 @@
 #include "debug/Special.hh"
 #include "debug/Special2.hh"
 #include "debug/CoB.hh"
-#include "debug/Flag_1.hh"
+#include "debug/Flag_1.hh"   //MemCtrl::accessAndRespond
+#include "debug/Flag_2.hh"   //MemCtrl::processRespondEvent
+#include "debug/Flag_3.hh"   //MemCtrl::addToReadQueue
 //YOURI_END
 #include "debug/NVM.hh"
 #include "debug/QOS.hh"
@@ -207,6 +209,16 @@ MemCtrl::addToReadQueue(PacketPtr pkt, unsigned int pkt_count, bool is_dram)
     assert(!pkt->isWrite());
 
     assert(pkt_count != 0);
+
+    //YOURI
+    std::string memoryCmd = pkt->isRead() ? "RD" : "WR";
+    DPRINTF(Flag_3, "mem_ctrl : %s, mem_pkt address: %#x, size: %s\n",
+        memoryCmd,
+        pkt->getAddr(),pkt->getSize());
+    DPRINTF(Flag_3,"mem_ctrl : DDUMP: getsize: %d\n", pkt->getSize());
+    // if (mem_pkt->pkt != null) {
+    DDUMP(Flag_3, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+    //YOURI_END
 
     // if the request size is larger than burst size, the pkt is split into
     // multiple packets
@@ -512,6 +524,15 @@ MemCtrl::processRespondEvent()
     if (mem_pkt->isDram()) {
         // media specific checks and functions when read response is complete
         dram->respondEvent(mem_pkt->rank);
+        //YOURI
+        std::string memoryCmd = mem_pkt->isRead() ? "RD" : "WR";
+        DPRINTF(Flag_2, "mem_ctrl : %s, mem_pkt address: %#x, size: %s\n",
+            memoryCmd,
+            mem_pkt->getAddr(),mem_pkt->getSize());
+        DPRINTF(Flag_2,"mem_ctrl : DDUMP: getsize: %d\n", mem_pkt->getSize());
+        // if (mem_pkt->pkt != null) {
+        DDUMP(Flag_2, mem_pkt->pkt->getConstPtr<uint8_t>(), mem_pkt->pkt->getSize());
+        //YOURI_END
     }
 
     if (mem_pkt->burstHelper) {
@@ -673,7 +694,7 @@ MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
         dram->access(pkt);
         //YOURI
         std::string memoryCmd = pkt->isRead() ? "RD" : "WR";
-        DPRINTF(Flag_1, "mem_interface : %s, mem_pkt address: %#x, size: %s\n",
+        DPRINTF(Flag_1, "mem_ctrl : %s, mem_pkt address: %#x, size: %s\n",
             memoryCmd,
             pkt->getAddr(),pkt->getSize());
         DPRINTF(Flag_1,"mem_ctrl : DDUMP: getsize: %d\n", pkt->getSize());
