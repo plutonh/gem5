@@ -51,6 +51,7 @@
 #include "debug/Special.hh"
 #include "debug/DRAM.hh"
 #include "debug/CoB.hh"
+#include "debug/Flag_1.hh"
 //YOURI_END
 #include "mem/packet_access.hh"
 #include "sim/system.hh"
@@ -379,6 +380,12 @@ tracePacket(System *sys, const char *label, PacketPtr pkt)
             size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
     DDUMP(Special, pkt->getConstPtr<uint8_t>(), pkt->getSize());
     DDUMP(CoB, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+    if (pkt->cmd == MemCmd::ReadExReq) {
+        DPRINTF(MemoryAccess, "%s from %s of size %i on address %#x %c\n",
+            label, sys->getRequestorName(pkt->req->requestorId()),
+            size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
+        DDUMP(Flag_1, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+    }
     //YOURI_END
 }
 
@@ -391,7 +398,7 @@ void
 AbstractMemory::access(PacketPtr pkt)
 {
     // YouriSu
-    // We want to know if this is DRAM acdess or not.
+    // We want to know if this is DRAM access or not.
     // This can be checked by the dynamic type of this class (whether it's DRAMInterface)
     // or by getting the mem_pkt as a parameter.
     if (pkt->cacheResponding()) {
@@ -470,7 +477,6 @@ AbstractMemory::access(PacketPtr pkt)
         assert(!pkt->isWrite());
         // in a fastmem system invalidating and/or cleaning packets
         // can be seen due to cache maintenance requests
-
         // no need to do anything
     } else if (pkt->isWrite()) {
         if (writeOK(pkt)) {

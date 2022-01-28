@@ -143,6 +143,7 @@ DebugFlag('TokenPort')
 DebugFlag('Special')
 DebugFlag('Special2')
 DebugFlag('CoB')
+DebugFlag('Flag_1')
 #YOURI_END
 DebugFlag("MemChecker")
 DebugFlag("MemCheckerMonitor")

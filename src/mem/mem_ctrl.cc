@@ -48,6 +48,7 @@
 #include "debug/Special.hh"
 #include "debug/Special2.hh"
 #include "debug/CoB.hh"
+#include "debug/Flag_1.hh"
 //YOURI_END
 #include "debug/NVM.hh"
 #include "debug/QOS.hh"
@@ -670,6 +671,15 @@ MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
     if (dram && dram->getAddrRange().contains(pkt->getAddr())) {
         // YouriSu
         dram->access(pkt);
+        //YOURI
+        std::string memoryCmd = pkt->isRead() ? "RD" : "WR";
+        DPRINTF(Flag_1, "mem_interface : %s, mem_pkt address: %#x, size: %s\n",
+            memoryCmd,
+            pkt->getAddr(),pkt->getSize());
+        DPRINTF(Flag_1,"mem_ctrl : DDUMP: getsize: %d\n", pkt->getSize());
+        // if (mem_pkt->pkt != null) {
+        DDUMP(Flag_1, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+        //YOURI_END
     } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
         nvm->access(pkt);
     } else {
