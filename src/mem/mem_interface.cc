@@ -590,8 +590,8 @@ DRAMInterface::doBurstAccess(MemPacket* mem_pkt, Tick next_burst_at,
     activeRank = mem_pkt->rank;
     //YOURI
     std::string memoryCmd = mem_pkt->isRead() ? "RD" : "WR";
-    DPRINTF(Special, "interface cmd: %s from %s, mem_pkt address: %#x\n",
-            memoryCmd, system()->getRequestorName(mem_pkt->requestorId()),
+    DPRINTF(Special, "mem_interface : %s --- cmd: %s, mem_pkt address: %#x\n",
+            system()->getRequestorName(mem_pkt->requestorId()), memoryCmd,
             mem_pkt->getAddr());
 
 

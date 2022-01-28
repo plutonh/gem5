@@ -50,6 +50,7 @@
 //YOURI
 #include "debug/Special.hh"
 #include "debug/DRAM.hh"
+#include "debug/CoB.hh"
 //YOURI_END
 #include "mem/packet_access.hh"
 #include "sim/system.hh"
@@ -373,7 +374,11 @@ tracePacket(System *sys, const char *label, PacketPtr pkt)
             size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
     DDUMP(MemoryAccess, pkt->getConstPtr<uint8_t>(), pkt->getSize());
     //YOURI
+    DPRINTF(MemoryAccess, "%s from %s of size %i on address %#x %c\n",
+            label, sys->getRequestorName(pkt->req->requestorId()),
+            size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
     DDUMP(Special, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+    DDUMP(CoB, pkt->getConstPtr<uint8_t>(), pkt->getSize());
     //YOURI_END
 }
 
@@ -385,6 +390,10 @@ tracePacket(System *sys, const char *label, PacketPtr pkt)
 void
 AbstractMemory::access(PacketPtr pkt)
 {
+    // YouriSu
+    // We want to know if this is DRAM acdess or not.
+    // This can be checked by the dynamic type of this class (whether it's DRAMInterface)
+    // or by getting the mem_pkt as a parameter.
     if (pkt->cacheResponding()) {
         DPRINTF(MemoryAccess, "Cache responding to %#llx: not responding\n",
                 pkt->getAddr());

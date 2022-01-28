@@ -141,6 +141,8 @@ DebugFlag('SerialLink')
 DebugFlag('TokenPort')
 #YOURI
 DebugFlag('Special')
+DebugFlag('Special2')
+DebugFlag('CoB')
 #YOURI_END
 DebugFlag("MemChecker")
 DebugFlag("MemCheckerMonitor")

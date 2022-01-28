@@ -46,6 +46,8 @@
 #include "debug/MemCtrl.hh"
 //YOURI
 #include "debug/Special.hh"
+#include "debug/Special2.hh"
+#include "debug/CoB.hh"
 //YOURI_END
 #include "debug/NVM.hh"
 #include "debug/QOS.hh"
@@ -529,6 +531,25 @@ MemCtrl::processRespondEvent()
         accessAndRespond(mem_pkt->pkt, frontendLatency + backendLatency);
     }
 
+// YouriSu
+    if (mem_pkt->isDram()) {
+        std::string memoryCmd = mem_pkt->isRead() ? "RD" : "WR";
+        DPRINTF(Special, "mem_interface : %s, mem_pkt address: %#x\n",
+            memoryCmd,
+            mem_pkt->getAddr());
+        DPRINTF(CoB, "mem_interface : %s, mem_pkt address: %#x\n",
+            memoryCmd,
+            mem_pkt->getAddr());
+        DPRINTF(CoB,"mem_ctrl : DDUMP: getsize: %d\n", mem_pkt->pkt->getSize());
+        // if (mem_pkt->pkt != null) {
+        DDUMP(CoB, mem_pkt->pkt->getConstPtr<uint8_t>(), mem_pkt->pkt->getSize());
+
+        DPRINTF(Special2,"mem_ctrl : DDUMP: getsize: %d\n", mem_pkt->pkt->getSize());
+        // if (mem_pkt->pkt != null) {
+        DDUMP(Special2, mem_pkt->pkt->getConstPtr<uint8_t>(), mem_pkt->pkt->getSize());
+        // }
+    }
+
     respQueue.pop_front();
 
     if (!respQueue.empty()) {
@@ -647,6 +668,7 @@ MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
     // do the actual memory access which also turns the packet into a
     // response
     if (dram && dram->getAddrRange().contains(pkt->getAddr())) {
+        // YouriSu
         dram->access(pkt);
     } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
         nvm->access(pkt);
@@ -834,10 +856,14 @@ MemCtrl::doBurstAccess(MemPacket* mem_pkt)
                  dram->doBurstAccess(mem_pkt, nextBurstAt, queue);
         //YOURI
         std::string memoryCmd = mem_pkt->isRead() ? "RD" : "WR";
-        DPRINTF(Special, "mem_ctrl cmd: %s from %s, mem_pkt address: %#x rank/bank/row %d %d %d\n",
-            memoryCmd, system()->getRequestorName(mem_pkt->requestorId()),
+        DPRINTF(Special, "mem_ctrl : %s --- cmd: %s , mem_pkt address: %#x rank/bank/row %d %d %d\n",
+            system()->getRequestorName(mem_pkt->requestorId()), memoryCmd,
             mem_pkt->getAddr(),mem_pkt->rank,mem_pkt->bank,mem_pkt->row);
-        //DDUMP(Special, mem_pkt->getConstPtr<uint8_t>(), mem_pkt->getSize());
+        DPRINTF(Special,"mem_packet: %s\n",mem_pkt);
+        //DPRINTF(Special,"mem_ctrl : DDUMP");
+        // if (mem_pkt->pkt != null) {
+        //     DDUMP(Special, mem_pkt->pkt->getConstPtr<uint8_t>(), mem_pkt->pkt->getSize());
+        // }
         //DPRINTF(Special, "update addr %#x, rank/bank/row %d %d %d\n",
         //    mem_pkt->addr, mem_pkt->rank, mem_pkt->bank, mem_pkt->row);
         //YOURI_END

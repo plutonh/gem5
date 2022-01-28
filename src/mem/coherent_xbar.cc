@@ -49,6 +49,10 @@
 #include "base/logging.hh"
 #include "base/trace.hh"
 #include "debug/AddrRanges.hh"
+//YOURI
+#include "debug/Special.hh"
+#include "debug/CoB.hh"
+//YOURI_END
 #include "debug/CoherentXBar.hh"
 #include "sim/system.hh"
 
@@ -172,6 +176,10 @@ CoherentXBar::recvTimingReq(PacketPtr pkt, PortID cpu_side_port_id)
 
     DPRINTF(CoherentXBar, "%s: src %s packet %s\n", __func__,
             src_port->name(), pkt->print());
+    //YOURI
+    DPRINTF(CoB, "1---%s: src %s packet %s\n", __func__,
+            src_port->name(), pkt->print());
+    //YOURI_END        
 
     // store size and command as they might be modified when
     // forwarding the packet
@@ -466,6 +474,10 @@ CoherentXBar::recvTimingResp(PacketPtr pkt, PortID mem_side_port_id)
 
     DPRINTF(CoherentXBar, "%s: src %s packet %s\n", __func__,
             src_port->name(), pkt->print());
+    //YOURI
+    DPRINTF(CoB, "2--- %s : src %s packet %s\n", __func__,
+            src_port->name(), pkt->print());
+    //YOURI_END        
 
     // store size and command as they might be modified when
     // forwarding the packet
@@ -511,6 +523,10 @@ CoherentXBar::recvTimingSnoopReq(PacketPtr pkt, PortID mem_side_port_id)
 {
     DPRINTF(CoherentXBar, "%s: src %s packet %s\n", __func__,
             memSidePorts[mem_side_port_id]->name(), pkt->print());
+    //YOURI
+    DPRINTF(CoB, "3---%s: src %s packet %s\n", __func__,
+            memSidePorts[mem_side_port_id]->name(), pkt->print());
+    //YOURI_END        
 
     // update stats here as we know the forwarding will succeed
     unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
@@ -609,6 +625,10 @@ CoherentXBar::recvTimingSnoopResp(PacketPtr pkt, PortID cpu_side_port_id)
 
     DPRINTF(CoherentXBar, "%s: src %s packet %s\n", __func__,
             src_port->name(), pkt->print());
+    //YOURI
+    DPRINTF(CoB, "4--- %s: src %s packet %s\n", __func__,
+            src_port->name(), pkt->print());
+    //YOURI_END        
 
     // store size and command as they might be modified when
     // forwarding the packet
@@ -739,6 +759,10 @@ CoherentXBar::recvAtomicBackdoor(PacketPtr pkt, PortID cpu_side_port_id,
 {
     DPRINTF(CoherentXBar, "%s: src %s packet %s\n", __func__,
             cpuSidePorts[cpu_side_port_id]->name(), pkt->print());
+    //YOURI
+    DPRINTF(CoB, "5--- %s: src %s packet %s\n", __func__,
+            cpuSidePorts[cpu_side_port_id]->name(), pkt->print());
+    //YOURI_END        
 
     unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
     unsigned int pkt_cmd = pkt->cmdToIndex();
@@ -890,6 +914,10 @@ CoherentXBar::recvAtomicSnoop(PacketPtr pkt, PortID mem_side_port_id)
 {
     DPRINTF(CoherentXBar, "%s: src %s packet %s\n", __func__,
             memSidePorts[mem_side_port_id]->name(), pkt->print());
+    //YOURI
+    DPRINTF(CoB, "6--- %s: src %s packet %s\n", __func__,
+            memSidePorts[mem_side_port_id]->name(), pkt->print());
+    //YOURI_END        
 
     // add the request snoop data
     unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
@@ -1004,6 +1032,10 @@ CoherentXBar::recvFunctional(PacketPtr pkt, PortID cpu_side_port_id)
         // don't do DPRINTFs on PrintReq as it clutters up the output
         DPRINTF(CoherentXBar, "%s: src %s packet %s\n", __func__,
                 cpuSidePorts[cpu_side_port_id]->name(), pkt->print());
+        //YOURI
+        DPRINTF(CoB, "7--- %s: src %s packet %s\n", __func__,
+                cpuSidePorts[cpu_side_port_id]->name(), pkt->print());
+        //YOURI_END  
     }
 
     if (!system->bypassCaches()) {
@@ -1040,6 +1072,11 @@ CoherentXBar::recvFunctionalSnoop(PacketPtr pkt, PortID mem_side_port_id)
         // don't do DPRINTFs on PrintReq as it clutters up the output
         DPRINTF(CoherentXBar, "%s: src %s packet %s\n", __func__,
                 memSidePorts[mem_side_port_id]->name(), pkt->print());
+                //DDUMP(Speical2, pkt->getConstPtr<uint8_t>(),pkt->getSize());
+        //YOURI
+        DPRINTF(CoB, "8--- %s: src %s packet %s\n", __func__,
+                memSidePorts[mem_side_port_id]->name(), pkt->print());
+        //YOURI_END  
     }
 
     for (const auto& p : cpuSidePorts) {

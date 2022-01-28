@@ -74,6 +74,8 @@ namespace memory
  * General interface to memory device
  * Includes functions and parameters shared across media types
  */
+ // YouriSu
+ // AbstractMemory -> MemInterface ->DRAMInterface
 class MemInterface : public AbstractMemory
 {
   protected:
