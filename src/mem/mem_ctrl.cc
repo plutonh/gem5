@@ -50,7 +50,8 @@
 #include "debug/CoB.hh"
 #include "debug/Flag_1.hh"   //MemCtrl::accessAndRespond
 #include "debug/Flag_2.hh"   //MemCtrl::processRespondEvent
-#include "debug/Flag_3.hh"   //MemCtrl::addToReadQueue
+#include "debug/Flag_3.hh"   //MemCtrl::addToReadQueue -> same data to Fla_2
+#include "debug/Flag_4.hh"   //MemCtrl::processRespondEvent, Trace data in MemoryAccess
 //YOURI_END
 #include "debug/NVM.hh"
 #include "debug/QOS.hh"
@@ -559,13 +560,15 @@ MemCtrl::processRespondEvent()
         DPRINTF(Special, "mem_interface : %s, mem_pkt address: %#x\n",
             memoryCmd,
             mem_pkt->getAddr());
-        DPRINTF(CoB, "mem_interface : %s, mem_pkt address: %#x\n",
-            memoryCmd,
-            mem_pkt->getAddr());
-        DPRINTF(CoB,"mem_ctrl : DDUMP: getsize: %d\n", mem_pkt->pkt->getSize());
-        // if (mem_pkt->pkt != null) {
-        DDUMP(CoB, mem_pkt->pkt->getConstPtr<uint8_t>(), mem_pkt->pkt->getSize());
-
+        // DPRINTF(CoB, "mem_interface : %s, mem_pkt address: %#x\n",
+        //     memoryCmd,
+        //     mem_pkt->getAddr());
+        // DPRINTF(CoB,"mem_ctrl : DDUMP: getsize: %d\n", mem_pkt->pkt->getSize());
+        // // if (mem_pkt->pkt != null) {
+        // DDUMP(CoB, mem_pkt->pkt->getConstPtr<uint8_t>(), mem_pkt->pkt->getSize());
+        // DPRINTF(Flag_4,"-------------------------------------------------------\n");
+        // DDUMP(Flag_4, mem_pkt->pkt->getConstPtr<uint8_t>(), mem_pkt->pkt->getSize());
+        // DPRINTF(Flag_4,"-------------------------------------------------------\n");
         DPRINTF(Special2,"mem_ctrl : DDUMP: getsize: %d\n", mem_pkt->pkt->getSize());
         // if (mem_pkt->pkt != null) {
         DDUMP(Special2, mem_pkt->pkt->getConstPtr<uint8_t>(), mem_pkt->pkt->getSize());
@@ -700,6 +703,10 @@ MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
         DPRINTF(Flag_1,"mem_ctrl : DDUMP: getsize: %d\n", pkt->getSize());
         // if (mem_pkt->pkt != null) {
         DDUMP(Flag_1, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+        DPRINTF(Flag_4, "mem_ctrl : %s, mem_pkt address: %#x, size: %s\n",
+            memoryCmd,
+            pkt->getAddr(),pkt->getSize());
+        DDUMP(Flag_4, pkt->getConstPtr<uint8_t>(), pkt->getSize());
         //YOURI_END
     } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
         nvm->access(pkt);

@@ -52,6 +52,7 @@
 #include "debug/DRAM.hh"
 #include "debug/CoB.hh"
 #include "debug/Flag_1.hh"
+#include "debug/AbsMem.hh"
 //YOURI_END
 #include "mem/packet_access.hh"
 #include "sim/system.hh"
@@ -375,17 +376,16 @@ tracePacket(System *sys, const char *label, PacketPtr pkt)
             size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
     DDUMP(MemoryAccess, pkt->getConstPtr<uint8_t>(), pkt->getSize());
     //YOURI
-    DPRINTF(MemoryAccess, "%s from %s of size %i on address %#x %c\n",
+    DPRINTF(AbsMem, "%s from %s of size %i on address %#x %c\n",
             label, sys->getRequestorName(pkt->req->requestorId()),
             size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
-    DDUMP(Special, pkt->getConstPtr<uint8_t>(), pkt->getSize());
-    DDUMP(CoB, pkt->getConstPtr<uint8_t>(), pkt->getSize());
-    if (pkt->cmd == MemCmd::ReadExReq) {
-        DPRINTF(MemoryAccess, "%s from %s of size %i on address %#x %c\n",
-            label, sys->getRequestorName(pkt->req->requestorId()),
-            size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
-        DDUMP(Flag_1, pkt->getConstPtr<uint8_t>(), pkt->getSize());
-    }
+    DDUMP(AbsMem, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+    // if (pkt->cmd == MemCmd::ReadExReq) {
+    //     DPRINTF(Flag_4, "%s from %s of size %i on address %#x %c\n",
+    //         label, sys->getRequestorName(pkt->req->requestorId()),
+    //         size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
+    //     DDUMP(Flag_4, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+    // }
     //YOURI_END
 }
 
