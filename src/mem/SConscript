@@ -146,7 +146,6 @@ DebugFlag('CoB')
 DebugFlag('Flag_1')
 DebugFlag('Flag_2')
 DebugFlag('Flag_3')
-DebugFlag('Flag_4')
 DebugFlag('AbsMem')
 #YOURI_END
 DebugFlag("MemChecker")

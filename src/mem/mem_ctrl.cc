@@ -50,8 +50,7 @@
 #include "debug/CoB.hh"
 #include "debug/Flag_1.hh"   //MemCtrl::accessAndRespond
 #include "debug/Flag_2.hh"   //MemCtrl::processRespondEvent
-#include "debug/Flag_3.hh"   //MemCtrl::addToReadQueue -> same data to Fla_2
-#include "debug/Flag_4.hh"   //MemCtrl::processRespondEvent, Trace data in MemoryAccess
+#include "debug/Flag_3.hh"   //MemCtrl::addToReadQueue -> same data to Flag_2
 //YOURI_END
 #include "debug/NVM.hh"
 #include "debug/QOS.hh"
@@ -700,13 +699,7 @@ MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
         DPRINTF(Flag_1, "mem_ctrl : %s, mem_pkt address: %#x, size: %s\n",
             memoryCmd,
             pkt->getAddr(),pkt->getSize());
-        DPRINTF(Flag_1,"mem_ctrl : DDUMP: getsize: %d\n", pkt->getSize());
-        // if (mem_pkt->pkt != null) {
         DDUMP(Flag_1, pkt->getConstPtr<uint8_t>(), pkt->getSize());
-        DPRINTF(Flag_4, "mem_ctrl : %s, mem_pkt address: %#x, size: %s\n",
-            memoryCmd,
-            pkt->getAddr(),pkt->getSize());
-        DDUMP(Flag_4, pkt->getConstPtr<uint8_t>(), pkt->getSize());
         //YOURI_END
     } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
         nvm->access(pkt);
