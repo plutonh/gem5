@@ -51,6 +51,7 @@
 #include "debug/Flag_1.hh"   //MemCtrl::accessAndRespond
 #include "debug/Flag_2.hh"   //MemCtrl::processRespondEvent
 #include "debug/Flag_3.hh"   //MemCtrl::addToReadQueue -> same data to Flag_2
+#include "debug/onlyData.hh"
 //YOURI_END
 #include "debug/NVM.hh"
 #include "debug/QOS.hh"
@@ -683,6 +684,10 @@ MemCtrl::chooseNextFRFCFS(MemPacketQueue& queue, Tick extra_col_delay)
     return selected_pkt_it;
 }
 
+int youriCounterR = 0;
+int youriCounterW = 0;
+
+
 void
 MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
 {
@@ -696,10 +701,18 @@ MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
         dram->access(pkt);
         //YOURI
         std::string memoryCmd = pkt->isRead() ? "RD" : "WR";
-        DPRINTF(Flag_1, "mem_ctrl : %s, mem_pkt address: %#x, size: %s\n",
+        if (pkt->isRead()) {
+            youriCounterR += pkt->getSize();
+        }
+        else {
+            youriCounterW += pkt->getSize();
+        }
+        DPRINTF(Flag_1, "mem_ctrl : %s, mem_pkt address: %#x, size: %d, readSize: %d, writeSize: %d\n",
             memoryCmd,
-            pkt->getAddr(),pkt->getSize());
+            pkt->getAddr(),pkt->getSize(), youriCounterR, youriCounterW);
         DDUMP(Flag_1, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+//        DDUMP(onlyData, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+        DPRINTF(onlyData, pkt)
         //YOURI_END
     } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
         nvm->access(pkt);

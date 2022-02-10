@@ -147,6 +147,7 @@ DebugFlag('Flag_1')
 DebugFlag('Flag_2')
 DebugFlag('Flag_3')
 DebugFlag('AbsMem')
+DebugFlag('onlyData')
 #YOURI_END
 DebugFlag("MemChecker")
 DebugFlag("MemCheckerMonitor")
