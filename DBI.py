@@ -46,18 +46,18 @@ class Flag:
         return self.power
 
     def change_11(self):
-        maxIndex = DBI_Flag.Flags.index(max(DBI_Flag.Flags))
-        flag_11 = DBI_Flag.Flags[3]
-        DBI_Flag.Flags[3] = DBI_Flag.Flags[maxIndex]
-        DBI_Flag.Flags[maxIndex] = flag_11
+        maxIndex = self.Flags.index(max(self.Flags))
+        flag_11 = self.Flags[3]
+        self.Flags[3] = self.Flags[maxIndex]
+        self.Flags[maxIndex] = flag_11
     
-        return DBI_Flag 
+        return self
     
 
     def sortFlags(self):
         self.Flags.sort()
     
-        return DBI_Flag
+        return self
 
 # Initialization
 total_powerdc_no_NRZ = 0
