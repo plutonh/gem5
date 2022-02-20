@@ -711,8 +711,7 @@ MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
             memoryCmd,
             pkt->getAddr(),pkt->getSize(), youriCounterR, youriCounterW);
         DDUMP(Flag_1, pkt->getConstPtr<uint8_t>(), pkt->getSize());
-//        DDUMP(onlyData, pkt->getConstPtr<uint8_t>(), pkt->getSize());
-        DPRINTF(onlyData, pkt)
+        DDUMP(onlyData, pkt->getConstPtr<uint8_t>(), pkt->getSize());
         //YOURI_END
     } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
         nvm->access(pkt);
