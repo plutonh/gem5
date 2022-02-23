@@ -55,14 +55,15 @@ def NRZ_experiment(_data_NRZ_set):
     
     # do the experiment 1
     for data_NRZ in _data_NRZ_set:
-        current_powerdc_no_NRZ = 1/100 * sum(data_NRZ)
+        # non-encoded
+        current_powerdc_no_NRZ = 1/100 * (8-sum(data_NRZ))
         total_powerdc_no_NRZ = total_powerdc_no_NRZ + current_powerdc_no_NRZ
 
         # encoded
         ### 1
-        if sum(data_NRZ) >= 4:
+        if sum(data_NRZ) <= 4:
             data_NRZ = inversion(data_NRZ)
-        current_powerdc_1 = 1/100 * sum(data_NRZ)
+        current_powerdc_1 = 1/100 * (8-sum(data_NRZ))
         total_powerdc_1 = total_powerdc_1 + current_powerdc_1
     
     power_ratio_1 = calRatio(total_powerdc_1, total_powerdc_no_NRZ)
@@ -176,6 +177,7 @@ data_6_bin = open("/home/youri/project/gem5/DBI/DATA_input/susan_large_smoothing
 data_7_bin = open("/home/youri/project/gem5/DBI/DATA_input/susan_small_smoothing_bin.txt","r")
 data_8_bin = open("/home/youri/project/gem5/DBI/DATA_input/FFT_bin.txt","r")
 data_random = open("/home/youri/project/gem5/DBI/DATA_input/random_data_10000.txt","r")
+data_000 = open("/home/youri/project/gem5/DBI/DATA_input/test000.txt")
 
 
 def doExperiment(_file,_num):
@@ -199,6 +201,7 @@ doExperiment(data_1_bin,1)
 # doExperiment(data_7_bin,7)
 # doExperiment(data_8_bin,8)
 # doExperiment(data_random,9)
+# doExperiment(data_000,10)
 
 
 
@@ -212,5 +215,6 @@ data_6_bin.close()
 data_7_bin.close()
 data_8_bin.close()
 data_random.close()
+data_000.close()
 
 print('\n\n\nclear!!!')

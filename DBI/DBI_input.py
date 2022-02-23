@@ -66,6 +66,7 @@ data_8_bin = open("/home/youri/project/gem5/DBI/DATA_input/FFT_bin.txt","r")
 data_random = open("/home/youri/project/gem5/DBI/DATA_input/random_data_10000.txt","r")
 
 def doExperiment(_file,_num):
+    print('********************* start experiment ', _num, ' *********************')
     # Initialization
     total_powerdc_no_NRZ = 0
     total_powerdc_no_PAM4 = 0
@@ -89,14 +90,14 @@ def doExperiment(_file,_num):
 
         # non - encoded
         ### 1
-        current_powerdc_no_NRZ = 1/100 * sum(data_NRZ)
+        current_powerdc_no_NRZ = 1/100 * (8-sum(data_NRZ))
         total_powerdc_no_NRZ = total_powerdc_no_NRZ + current_powerdc_no_NRZ
 
         # encoded
         ### 1
-        if sum(data_NRZ) >= 4:
+        if sum(data_NRZ) <= 4:
             inversion(data_NRZ)
-        current_powerdc_1 = 1/100 * sum(data_NRZ)
+        current_powerdc_1 = 1/100 * (8-sum(data_NRZ))
         total_powerdc_1 = total_powerdc_1 + current_powerdc_1
 
         # data for PAM4
@@ -139,6 +140,7 @@ def doExperiment(_file,_num):
         _count = 1
 
     # Ratio
+    print('######################### Result ', _num, '#########################') 
     ### 1
     power_ratio_1 = calRatio(total_powerdc_1, total_powerdc_no_NRZ)
     print('power_ratio_1 =', power_ratio_1, '%')
