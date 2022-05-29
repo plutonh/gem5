@@ -35,9 +35,10 @@ def sortCompare(_origin, _sorted):
     # print('origin = ', _origin)
     # print('sorted = ', _sorted)
     for _index in range(4):
-        if _origin[_index] < _sorted[_index]:
-            _diff = _sorted[_index] - _origin[_index]
-            _cList.append([_index, _diff])
+        _sortedIndex = _sorted.index(_origin[_index])
+        if (_origin[_index] != _sorted[_index]) and (_sortedIndex > _index):
+            _diff = _sortedIndex - _index
+            _cList.append([_sortedIndex, _diff])
     # print('cList = ', _cList)
 
     return _cList
@@ -195,7 +196,9 @@ def doExperiment(_file,_num):
         changed_DBI_Flag, maxIndex = DBI_Flag.change_11()
         # print('change_11 =', DBI_Flag.Flags)
         total_powerdc_3 = total_powerdc_3 + changed_DBI_Flag.calPower(0,1,2,3)
-        charging_3 = charging_3 + calCharging(3,maxIndex) * DBI_Flag.Flags[maxIndex]
+        # print(DBI_Flag.Flags)
+        charging_3 = charging_3 + calCharging(3,maxIndex) * DBI_Flag.Flags[3]
+        # print(calCharging(3,maxIndex))
         ### 4
         sorted_DBI_Flag = DBI_Flag.sortFlags()
         # print('sorted4 = ',DBI_Flag.Flags)
