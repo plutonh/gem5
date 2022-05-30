@@ -124,7 +124,7 @@ def doExperiment(_file,_num):
 
     num_flag = [0 for k in range(4)]
 
-    const = 15 * 3.3 * 10e-6 # 15pF * 3.3GHz * (1V)^2
+    const = 15 * 3.3 * 10e-3 # 15pF * 3.3GHz * (1V)^2
 
     print('start experiment',_num)
     _count = 0
