@@ -132,7 +132,10 @@ def doExperiment(_file,_num):
     charging_4 = 0
     lines = _file.readlines()
 
-    const = 15 * 3.3 * 10e-3 / len(lines) * 8 # 15pF * 3.3GHz * (1V)^2
+    const = 15 * 3.3 * 10e-3 / (len(lines) * 8) # 15pF * 3.3GHz * (1V)^2
+
+    # example_1 = 0
+    # example_2 = 0
 
     # p = 0
 
@@ -148,10 +151,16 @@ def doExperiment(_file,_num):
         # encoded
         ### 1
         if sum(data_NRZ) <= 4:
-            charging_1 = charging_1 + (8 - sum(data_NRZ)) / 8
+            charging_1 = charging_1 + (8 - sum(data_NRZ))
             inversion(data_NRZ)
         current_powerdc_1 = 1/100 * (8-sum(data_NRZ))
         total_powerdc_1 = total_powerdc_1 + current_powerdc_1
+
+        # if example_1 < 3:
+        #     print(lines[i], ' encoded to ', data_NRZ)
+        #     print('switching power: ', (8 - sum(data_NRZ)) * const)
+
+        # example_1 += 1
 
         # data for PAM4
         if _count % 2 == 1:
@@ -185,7 +194,7 @@ def doExperiment(_file,_num):
         ### 2
         if 3 * DBI_Flag.Flags[0] + DBI_Flag.Flags[1] - DBI_Flag.Flags[2] - 3 * DBI_Flag.Flags[3] > 0:   # before power > after power => inversion
             total_powerdc_2 = total_powerdc_2 + DBI_Flag.calPower(3,2,1,0)
-            charging_2 = charging_2 + (calCharging(3,0) * DBI_Flag.Flags[0] + calCharging(2,1) * DBI_Flag.Flags[1]) / 16 ## 00 -> 11 and 01 -> 10
+            charging_2 = charging_2 + (calCharging(3,0) * DBI_Flag.Flags[0] + calCharging(2,1) * DBI_Flag.Flags[1]) ## 00 -> 11 and 01 -> 10
             # print('charging_2 = ', charging_2)
             # print('DBI_Flag.Flags[0] = ',DBI_Flag.Flags[0])
             # print('calCharging(3,0) = ',calCharging(3,0))
@@ -197,7 +206,7 @@ def doExperiment(_file,_num):
         # print('change_11 =', DBI_Flag.Flags)
         total_powerdc_3 = total_powerdc_3 + changed_DBI_Flag.calPower(0,1,2,3)
         # print(DBI_Flag.Flags)
-        charging_3 = charging_3 + calCharging(3,maxIndex) * DBI_Flag.Flags[3] / 16
+        charging_3 = charging_3 + calCharging(3,maxIndex) * DBI_Flag.Flags[3]
         # print(calCharging(3,maxIndex))
         ### 4
         sorted_DBI_Flag = DBI_Flag.sortFlags()
@@ -206,9 +215,10 @@ def doExperiment(_file,_num):
         # print('DBI_Flag_Origin', DBI_Flag_Origin)
         cList = sortCompare(DBI_Flag_Origin, sorted_DBI_Flag.Flags)
         for i in range(len(cList)):
-            charging_4 = charging_4 + calCharging(cList[i][1], 0) * DBI_Flag.Flags[cList[i][0]] / 16
+            charging_4 = charging_4 + calCharging(cList[i][1], 0) * DBI_Flag.Flags[cList[i][0]]
         _count = 1
         # print('\n\n\n\n\n')
+        # exmaple_2 += 1
 
     # Ratio
     print('######################### Result ', _num, '#########################') 
