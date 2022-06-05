@@ -1,4 +1,5 @@
 import sys
+import copy
 
 sys.stdout = open('/home/youri/project/gem5/DBE/SwitchingExperimentResults.txt', 'w')
 
@@ -69,22 +70,26 @@ def switchingPAM4(_prev_PAM4, _cur_PAM4):
 
  # PAM4-DBI
 def enc_PAM4_DBI(_PAM4_data):
-    _encoded = _PAM4_data  # 2*8
+    _encoded = copy.deepcopy(_PAM4_data)  # 2*8
     for i in range(8):
         if _PAM4_data[0][i] == 0 and _PAM4_data[1][i] == 0:       # <= 00
-            _encoded[0][i] == 1 and _encoded[1][i] == 1
+            _encoded[0][i] = 1
+            _encoded[1][i] = 1
         elif _PAM4_data[0][i] == 0 and _PAM4_data[1][i] == 1:     # <= 01
-            _encoded[0][i] == 1 and _encoded[1][i] == 0
+            _encoded[0][i] = 1
+            _encoded[1][i] = 0
         elif _PAM4_data[0][i] == 1 and _PAM4_data[1][i] == 0:     # <= 10
-            _encoded[0][i] == 0 and _encoded[1][i] == 1
+            _encoded[0][i] = 0
+            _encoded[1][i] = 1
         else:                                                     # <= 11
-            _encoded[0][i] == 0 and _encoded[1][i] == 0
+            _encoded[0][i] = 0
+            _encoded[1][i] = 0
 
     return _encoded
 
  # PAM4-MF
 def enc_PAM4_MF(_PAM4_data, _max_Index):
-    _encoded = _PAM4_data
+    _encoded = copy.deepcopy(_PAM4_data)
     # what is the most frequent?
     if _max_Index == 0:
         _fir = 0
@@ -108,12 +113,22 @@ def enc_PAM4_MF(_PAM4_data, _max_Index):
 
 def sortCompare(_origin, _sorted):
     _cList = [] # to store the index if it is changed : [before, after]
+    _already = [] # to store the index if it has been used
     # print('origin = ', _origin)
     # print('sorted = ', _sorted)
     for _index in range(4):
-        _sortedIndex = _sorted.index(_origin[_index]) # where it is in the sorted list
+        _sortedIndex = [t for t, value in enumerate(_sorted) if value == _origin[_index]]  # where it is in the sorted list
+        # print('_sortedIndex = ', _sortedIndex)
         if _origin[_index] != _sorted[_index]: # if it is not same
-            _cList.append([_index, _sortedIndex])
+            if len(_sortedIndex) > 1:
+                search  = _sortedIndex[0]
+                if search in _already:
+                    _sortedIndex.remove(_sortedIndex[0])
+                _cList.append([_index, _sortedIndex[0]])
+                _already.append(_sortedIndex[0])
+                # print("_sortedIndex[0] = ", _sortedIndex[0])
+            else:
+                _cList.append([_index, _sortedIndex[0]])
     
     return _cList
 
@@ -150,13 +165,17 @@ def int2bin(_cList_ele):  # element list in _cList
 
 # PAM4-Sort
 def enc_PAM4_sort(_data_PAM4, _cList):
-    _encoded = _data_PAM4
+    _encoded = copy.deepcopy(_data_PAM4)
+    # print("_cList = ", _cList)
+    # print(_data_PAM4)
     for i in range(len(_cList)):
         bFir, bSec, aFir, aSec = int2bin(_cList[i])
+        # print(bFir, bSec, ' to ', aFir, aSec)
         for j in range(8):
             if _data_PAM4[0][j] == bFir and _data_PAM4[1][j] == bSec:
                 _encoded[0][j] = aFir
                 _encoded[1][j] = aSec
+                # print(j, _encoded[0][j], _encoded[1][j])
 
     return _encoded
 
@@ -205,20 +224,20 @@ class Flag:
 
 # read files
 data_1_bin = open("/home/youri/project/gem5/DBE/DATA_input/1_bin.txt","r")
-data_2_bin = open("/home/youri/project/gem5/DBE/DATA_input/2_bin.txt","r")
-data_3_bin = open("/home/youri/project/gem5/DBE/DATA_input/3_bin.txt","r")
-data_4_bin = open("/home/youri/project/gem5/DBE/DATA_input/4_bin.txt","r")
-data_5_bin = open("/home/youri/project/gem5/DBE/DATA_input/5_bin.txt","r")
-data_6_bin = open("/home/youri/project/gem5/DBE/DATA_input/6_bin.txt","r")
-data_7_bin = open("/home/youri/project/gem5/DBE/DATA_input/7_bin.txt","r")
-data_8_bin = open("/home/youri/project/gem5/DBE/DATA_input/8_bin.txt","r")
-data_9_bin = open("/home/youri/project/gem5/DBE/DATA_input/9_bin.txt","r")
-data_10_bin = open("/home/youri/project/gem5/DBE/DATA_input/10_bin.txt","r")
-data_11_bin = open("/home/youri/project/gem5/DBE/DATA_input/11_bin.txt","r")
-data_12_bin = open("/home/youri/project/gem5/DBE/DATA_input/12_bin.txt","r")
-data_13_bin = open("/home/youri/project/gem5/DBE/DATA_input/13_bin.txt","r")
-data_14_bin = open("/home/youri/project/gem5/DBE/DATA_input/14_bin.txt","r")
-data_random = open("/home/youri/project/gem5/DBE/DATA_input/random_data_10000.txt","r")
+# data_2_bin = open("/home/youri/project/gem5/DBE/DATA_input/2_bin.txt","r")
+# data_3_bin = open("/home/youri/project/gem5/DBE/DATA_input/3_bin.txt","r")
+# data_4_bin = open("/home/youri/project/gem5/DBE/DATA_input/4_bin.txt","r")
+# data_5_bin = open("/home/youri/project/gem5/DBE/DATA_input/5_bin.txt","r")
+# data_6_bin = open("/home/youri/project/gem5/DBE/DATA_input/6_bin.txt","r")
+# data_7_bin = open("/home/youri/project/gem5/DBE/DATA_input/7_bin.txt","r")
+# data_8_bin = open("/home/youri/project/gem5/DBE/DATA_input/8_bin.txt","r")
+# data_9_bin = open("/home/youri/project/gem5/DBE/DATA_input/9_bin.txt","r")
+# data_10_bin = open("/home/youri/project/gem5/DBE/DATA_input/10_bin.txt","r")
+# data_11_bin = open("/home/youri/project/gem5/DBE/DATA_input/11_bin.txt","r")
+# data_12_bin = open("/home/youri/project/gem5/DBE/DATA_input/12_bin.txt","r")
+# data_13_bin = open("/home/youri/project/gem5/DBE/DATA_input/13_bin.txt","r")
+# data_14_bin = open("/home/youri/project/gem5/DBE/DATA_input/14_bin.txt","r")
+# data_random = open("/home/youri/project/gem5/DBE/DATA_input/random_data_10000.txt","r")
 
 def doExperiment(_file,_num):
     print('********************* start experiment ', _num, ' *********************')
@@ -268,17 +287,17 @@ def doExperiment(_file,_num):
         if sum(data_NRZ) <= 4:
             inversion(data_NRZ)
             if example_1 < 3:
-                print('#1 NRZ-DBI')
+                print('\n#1 NRZ-DBI')
                 print(lines[i], ' encoded to ', data_NRZ)
         elif example_1 < 3:
-            print('#1 NRZ-DBI')
+            print('\n#1 NRZ-DBI')
             print(lines[i], " nothing has been changed")
         ### 1 swithcing
         if i == 0: # first data
             prev_NRZ = data_NRZ
             print('first data: ', prev_NRZ)
         else:
-            current_NRZ = data_NRZ
+            current_NRZ = copy.deepcopy(data_NRZ)
             newCharging_1 = switchingNRZ(prev_NRZ, current_NRZ)
             charging_1 = charging_1 + newCharging_1
             if example_1 < 3:
@@ -322,65 +341,84 @@ def doExperiment(_file,_num):
         ### 2
         if 3 * DBI_Flag.Flags[0] + DBI_Flag.Flags[1] - DBI_Flag.Flags[2] - 3 * DBI_Flag.Flags[3] > 0:   # before power > after power => inversion
             total_powerdc_2 = total_powerdc_2 + DBI_Flag.calPower(3,2,1,0)
-            encoded_2 = enc_PAM4_DBI(data_PAM4)
+            data_PAM4_2 = copy.deepcopy(data_PAM4)
+            encoded_2 = enc_PAM4_DBI(data_PAM4_2)
+            # print("right after", data_PAM4)
             if example_2 < 3:
                 print("#2 PAM4-DBI")
                 print('encoded to ', encoded_2)
         else:
             total_powerdc_2 = total_powerdc_2 + DBI_Flag.calPower(0,1,2,3)
-            encoded_2 = data_PAM4
+            encoded_2 = copy.deepcopy(data_PAM4)
             if example_2 < 3:
                 print('#2 PAM4-DBI')
                 print("nothing has been changed")
         ### 2 switching
         if i == 0:
-            prev_PAM4_2 = encoded_2
+            prev_PAM4_2 = copy.deepcopy(encoded_2)
             print("first cycle")
+            print("first prev = ", prev_PAM4_2)
         else:
-            current_PAM4_2 = encoded_2
+            current_PAM4_2 = copy.deepcopy(encoded_2)
             newCharging_2 = switchingPAM4(prev_PAM4_2, current_PAM4_2)
+            prev_PAM4_2 = copy.deepcopy(encoded_2)
             if example_2 < 3:
+                print("prev_PAM4_2 = ", prev_PAM4_2)
+                print("current_PAM4_2 = ", current_PAM4_2)
                 print("newCharging_2 = ", newCharging_2)
             charging_2 = charging_2 + newCharging_2
+        # print('data_PAM4 = ', data_PAM4)
 
         ### 3
         changed_DBI_Flag, maxIndex = DBI_Flag.change_11()
         total_powerdc_3 = total_powerdc_3 + changed_DBI_Flag.calPower(0,1,2,3)
         if maxIndex != 3:
-            encoded_3 = enc_PAM4_MF(data_PAM4, maxIndex)
+            data_PAM4_3 = copy.deepcopy(data_PAM4)
+            encoded_3 = enc_PAM4_MF(data_PAM4_3, maxIndex)
             if example_2 < 3:
                 print('#3 PAM4-MF')
+                print("maxIndex = ", maxIndex)
                 print('encoded to ', encoded_3)
         else:
-            encoded_3 = data_PAM4
+            encoded_3 = copy.deepcopy(data_PAM4)
             if example_2 < 3:
                 print('#3 PAM4-MF')
                 print("nothing has been changed")
         # 3 switching
         if i == 0:
-            prev_PAM4_3 = encoded_3
+            prev_PAM4_3 = copy.deepcopy(encoded_3)
         else:
-            current_PAM4_3 = encoded_3
+            current_PAM4_3 = copy.deepcopy(encoded_3)
             newCharging_3 = switchingPAM4(prev_PAM4_3, current_PAM4_3)
             if example_2 < 3:
+                print("prev_PAM4_3 = ", prev_PAM4_3)
+                print("current_PAM4_3 = ", current_PAM4_3)
                 print("newCharging_3 = ", newCharging_3)
+            prev_PAM4_3 = copy.deepcopy(encoded_3)
             charging_3 = charging_3 + newCharging_3
+        # print('data_PAM4 = ', data_PAM4)
 
         ### 4
         sorted_DBI_Flag = DBI_Flag.sortFlags()
         total_powerdc_4 = total_powerdc_4 + sorted_DBI_Flag.calPower(0,1,2,3)
         cList = sortCompare(DBI_Flag_Origin, sorted_DBI_Flag.Flags)
-        encoded_4 = enc_PAM4_sort(data_PAM4, cList)
+        # print('the last data_PAM4 = ', data_PAM4)
+        data_PAM4_4 = copy.deepcopy(data_PAM4)
+        encoded_4 = enc_PAM4_sort(data_PAM4_4, cList)
         # 4 switching
         if i == 0:
-            prev_PAM4_4 = encoded_4
+            prev_PAM4_4 = copy.deepcopy(encoded_4)
             print("#4 PAM4-Sort")
+            print("origin, ", data_PAM4)
             print("first, encoded to ", encoded_4)
         else:
-            current_PAM4_4 = encoded_4
+            current_PAM4_4 = copy.deepcopy(encoded_4)
             newCharging_4 = switchingPAM4(prev_PAM4_4, current_PAM4_4)
             if example_2 < 3:
+                print("prev_PAM4_4 = ", prev_PAM4_4)
+                print("current_PAM4_4 = ", current_PAM4_4)
                 print("newCharging_4 = ", newCharging_4)
+            prev_PAM4_4 = copy.deepcopy(encoded_4)
             charging_4 = charging_4 + newCharging_4
         
         _count = 1
@@ -417,39 +455,39 @@ def doExperiment(_file,_num):
 
 
 doExperiment(data_1_bin,1)
-doExperiment(data_2_bin,2)
-doExperiment(data_3_bin,3)
-doExperiment(data_4_bin,4)
-doExperiment(data_5_bin,5)
-doExperiment(data_6_bin,6)
-doExperiment(data_7_bin,7)
-doExperiment(data_8_bin,8)
-doExperiment(data_9_bin,9)
-doExperiment(data_10_bin,10)
-doExperiment(data_11_bin,11)
-doExperiment(data_12_bin,12)
-doExperiment(data_13_bin,13)
-doExperiment(data_14_bin,14)
-doExperiment(data_random,15)
+# doExperiment(data_2_bin,2)
+# doExperiment(data_3_bin,3)
+# doExperiment(data_4_bin,4)
+# doExperiment(data_5_bin,5)
+# doExperiment(data_6_bin,6)
+# doExperiment(data_7_bin,7)
+# doExperiment(data_8_bin,8)
+# doExperiment(data_9_bin,9)
+# doExperiment(data_10_bin,10)
+# doExperiment(data_11_bin,11)
+# doExperiment(data_12_bin,12)
+# doExperiment(data_13_bin,13)
+# doExperiment(data_14_bin,14)
+# doExperiment(data_random,15)
 
 
 
 
 data_1_bin.close()
-data_2_bin.close()
-data_3_bin.close()
-data_4_bin.close()
-data_5_bin.close()
-data_6_bin.close()
-data_7_bin.close()
-data_8_bin.close()
-data_9_bin.close()
-data_10_bin.close()
-data_11_bin.close()
-data_12_bin.close()
-data_13_bin.close()
-data_14_bin.close()
-data_random.close()
+# data_2_bin.close()
+# data_3_bin.close()
+# data_4_bin.close()
+# data_5_bin.close()
+# data_6_bin.close()
+# data_7_bin.close()
+# data_8_bin.close()
+# data_9_bin.close()
+# data_10_bin.close()
+# data_11_bin.close()
+# data_12_bin.close()
+# data_13_bin.close()
+# data_14_bin.close()
+# data_random.close()
 
 print('clear')
 
