@@ -65,6 +65,9 @@ def switchingPAM4(_prev_PAM4, _cur_PAM4):
         else:
             newCharging = 0
         charging = charging + newCharging
+        # print(_int_prev, ' => ', _int_cur)
+        # print('newCharging = ',newCharging)
+        # print('charging = ', charging)
 
     return charging
 
@@ -361,11 +364,11 @@ def doExperiment(_file,_num):
         else:
             current_PAM4_2 = copy.deepcopy(encoded_2)
             newCharging_2 = switchingPAM4(prev_PAM4_2, current_PAM4_2)
-            prev_PAM4_2 = copy.deepcopy(encoded_2)
             if example_2 < 3:
                 print("prev_PAM4_2 = ", prev_PAM4_2)
                 print("current_PAM4_2 = ", current_PAM4_2)
                 print("newCharging_2 = ", newCharging_2)
+            prev_PAM4_2 = copy.deepcopy(encoded_2)
             charging_2 = charging_2 + newCharging_2
         # print('data_PAM4 = ', data_PAM4)
 
