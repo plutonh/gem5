@@ -265,6 +265,9 @@ def doExperiment(_file,_num):
     charging_2 = 0
     charging_3 = 0
     charging_4 = 0
+    # origin data
+    charging_NRZ_non = 0
+    charging_PAM4_non = 0
     
     # lines
     lines = _file.readlines()
@@ -281,6 +284,14 @@ def doExperiment(_file,_num):
     for i in range(len(lines)):
         # data for NRZ
         data_NRZ = list(map(int,list(lines[i])[:8])) # 1*8
+        # 1 origin switching
+        if i == 0:
+            prev_NRZ_non = copy.deepcopy(data_NRZ)
+        else:
+            current_NRZ_non = copy.deepcopy(data_NRZ)
+            newCharging_NRZ_non = switchingNRZ(prev_NRZ_non, current_NRZ_non)
+            charging_NRZ_non = charging_NRZ_non + newCharging_NRZ_non
+            prev_NRZ_non = copy.deepcopy(current_NRZ_non)
 
         # non - encoded
         ### 1
@@ -334,6 +345,14 @@ def doExperiment(_file,_num):
         ### 2, 3, 4
         current_powerdc_no_PAM4 = DBI_Flag.calPower(0,1,2,3)
         total_powerdc_no_PAM4 = total_powerdc_no_PAM4 + current_powerdc_no_PAM4
+
+        # 2,3,4 origin switching
+        if i == 0:
+            prev_PAM4_non = copy.deepcopy(data_PAM4)
+        else:
+            current_PAM4_non = copy.deepcopy(data_PAM4)
+            newCharging_PAM4_non = switchingPAM4(prev_PAM4_non, current_PAM4_non)
+            charging_PAM4_non = charging_PAM4_non + newCharging_PAM4_non
 
         # encoded
         DBI_Flag_Origin = copyInit(DBI_Flag.Flags) # to store the initial state
@@ -453,10 +472,10 @@ def doExperiment(_file,_num):
     
     # Power
     print("******************  SWITCHING POWER  ******************\n\n\n")
-    print("NRZ-DBI Power = ", charging_1, ' * ', const_NRZ, ' = ', charging_1 * const_NRZ, "W")
-    print("PAM4-DBI Power = ", charging_2, ' * ', const_PAM4, ' = ', charging_2 * const_PAM4, "W")
-    print("PAM4-MF Power = ", charging_3, ' * ', const_PAM4, ' = ', charging_3 * const_PAM4, "W")
-    print("PAM4-Sort Power = ", charging_4, ' * ', const_PAM4, ' = ', charging_4 * const_PAM4, "W\n\n\n\n\n")
+    print("NRZ-DBI switching power ratio = ", (charging_1 / charging_NRZ_non) * 100, '%' )
+    print("PAM4-DBI switching power ratio = ", (charging_2 / charging_PAM4_non) * 100 , "%")
+    print("PAM4-MF switching power ratio = ", (charging_3 / charging_PAM4_non) * 100 , "%")
+    print("PAM4-Sort switching power ratio = ", (charging_4 / charging_PAM4_non) * 100 , "%\n\n\n\n\n")
 
 
 doExperiment(data_1_bin,1)
