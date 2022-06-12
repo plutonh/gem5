@@ -1,3 +1,4 @@
+
 import sys
 import copy
 
@@ -351,7 +352,8 @@ def doExperiment(_file,_num):
             prev_PAM4_non = copy.deepcopy(data_PAM4)
         else:
             current_PAM4_non = copy.deepcopy(data_PAM4)
-            newCharging_PAM4_non = switchingPAM4(prev_PAM4_non, current_PAM4_non)
+            newCharging_PAM4_non  = switchingPAM4(prev_PAM4_non, current_PAM4_non)
+            prev_PAM4_non = copy.deepcopy(current_PAM4_non)
             charging_PAM4_non = charging_PAM4_non + newCharging_PAM4_non
 
         # encoded

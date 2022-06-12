@@ -18,9 +18,9 @@ total number [00]:  97.69922676675293 %  /  [01]:  0.8698874029624342 %  /  [10]
 
 
 NRZ-DBI switching power ratio =  91.90992835209826 %
-PAM4-DBI switching power ratio =  114.39023519754706 %
-PAM4-MF switching power ratio =  117.06163674649413 %
-PAM4-Sort switching power ratio =  95.0551411542182 %
+PAM4-DBI switching power ratio =  91.06044463385294 %
+PAM4-MF switching power ratio =  93.1870161233038 %
+PAM4-Sort switching power ratio =  75.66872647205093 %
 
 
 
@@ -46,9 +46,9 @@ total number [00]:  64.53495722641902 %  /  [01]:  10.786572713717149 %  /  [10]
 
 
 NRZ-DBI switching power ratio =  91.15971568758106 %
-PAM4-DBI switching power ratio =  44.887015394887364 %
-PAM4-MF switching power ratio =  45.77123596640965 %
-PAM4-Sort switching power ratio =  39.39623714969451 %
+PAM4-DBI switching power ratio =  91.97595080950569 %
+PAM4-MF switching power ratio =  93.78776714604807 %
+PAM4-Sort switching power ratio =  80.72504572386072 %
 
 
 
@@ -74,9 +74,9 @@ total number [00]:  49.30490497858672 %  /  [01]:  20.021831504282655 %  /  [10]
 
 
 NRZ-DBI switching power ratio =  88.57625648950007 %
-PAM4-DBI switching power ratio =  234.17961748518474 %
-PAM4-MF switching power ratio =  243.50631550091663 %
-PAM4-Sort switching power ratio =  203.2832170044028 %
+PAM4-DBI switching power ratio =  88.87670662803836 %
+PAM4-MF switching power ratio =  92.41640923859947 %
+PAM4-Sort switching power ratio =  77.15079149126704 %
 
 
 
@@ -102,9 +102,9 @@ total number [00]:  47.44676307728558 %  /  [01]:  21.110685673892554 %  /  [10]
 
 
 NRZ-DBI switching power ratio =  88.28723444398324 %
-PAM4-DBI switching power ratio =  51.985858192187074 %
-PAM4-MF switching power ratio =  53.68717016699011 %
-PAM4-Sort switching power ratio =  44.94875781955257 %
+PAM4-DBI switching power ratio =  88.77298780322164 %
+PAM4-MF switching power ratio =  91.67821150137274 %
+PAM4-Sort switching power ratio =  76.75617309102716 %
 
 
 
@@ -130,9 +130,9 @@ total number [00]:  74.16401911576249 %  /  [01]:  10.51133329773601 %  /  [10]:
 
 
 NRZ-DBI switching power ratio =  88.69456378336321 %
-PAM4-DBI switching power ratio =  110.73347900549315 %
-PAM4-MF switching power ratio =  114.14545561920531 %
-PAM4-Sort switching power ratio =  94.0028347014708 %
+PAM4-DBI switching power ratio =  88.72406369035023 %
+PAM4-MF switching power ratio =  91.45787493789503 %
+PAM4-Sort switching power ratio =  75.31880663401736 %
 
 
 
@@ -158,9 +158,9 @@ total number [00]:  93.50710822851153 %  /  [01]:  2.637660508385744 %  /  [10]:
 
 
 NRZ-DBI switching power ratio =  88.69803623631228 %
-PAM4-DBI switching power ratio =  110.60409831347596 %
-PAM4-MF switching power ratio =  113.9224658953552 %
-PAM4-Sort switching power ratio =  93.79784723421416 %
+PAM4-DBI switching power ratio =  88.64758257981258 %
+PAM4-MF switching power ratio =  91.30720612659186 %
+PAM4-Sort switching power ratio =  75.17761579627248 %
 
 
 
@@ -186,9 +186,9 @@ total number [00]:  81.9386574074074 %  /  [01]:  7.352546296296296 %  /  [10]: 
 
 
 NRZ-DBI switching power ratio =  88.77778709839778 %
-PAM4-DBI switching power ratio =  110.83613999121515 %
-PAM4-MF switching power ratio =  114.24513105872067 %
-PAM4-Sort switching power ratio =  94.10894713720933 %
+PAM4-DBI switching power ratio =  88.67774210933358 %
+PAM4-MF switching power ratio =  91.40520655153843 %
+PAM4-Sort switching power ratio =  75.29465520069364 %
 
 
 
@@ -214,9 +214,9 @@ total number [00]:  93.5553638891804 %  /  [01]:  2.621356516948263 %  /  [10]: 
 
 
 NRZ-DBI switching power ratio =  88.72781804548863 %
-PAM4-DBI switching power ratio =  110.66879906949787 %
-PAM4-MF switching power ratio =  114.05931956964265 %
-PAM4-Sort switching power ratio =  93.98517010758972 %
+PAM4-DBI switching power ratio =  88.6195615475073 %
+PAM4-MF switching power ratio =  91.33456742691492 %
+PAM4-Sort switching power ratio =  75.2599164076235 %
 
 
 
@@ -242,9 +242,9 @@ total number [00]:  97.68889543219991 %  /  [01]:  0.7903569699452535 %  /  [10]
 
 
 NRZ-DBI switching power ratio =  92.35333259398914 %
-PAM4-DBI switching power ratio =  801.8510106745339 %
-PAM4-MF switching power ratio =  809.5503066091228 %
-PAM4-Sort switching power ratio =  669.9977288212554 %
+PAM4-DBI switching power ratio =  94.91363666913144 %
+PAM4-MF switching power ratio =  95.82498823845718 %
+PAM4-Sort switching power ratio =  79.30640500033667 %
 
 
 
@@ -270,9 +270,9 @@ total number [00]:  74.1258211658199 %  /  [01]:  7.954425532556423 %  /  [10]: 
 
 
 NRZ-DBI switching power ratio =  91.25655977049276 %
-PAM4-DBI switching power ratio =  734.138778527319 %
-PAM4-MF switching power ratio =  745.0366811420968 %
-PAM4-Sort switching power ratio =  641.0444423912897 %
+PAM4-DBI switching power ratio =  91.98300552204948 %
+PAM4-MF switching power ratio =  93.34844468112063 %
+PAM4-Sort switching power ratio =  80.31886641738393 %
 
 
 
@@ -298,9 +298,9 @@ total number [00]:  72.60511012762454 %  /  [01]:  9.444794668587896 %  /  [10]:
 
 
 NRZ-DBI switching power ratio =  88.95520856492962 %
-PAM4-DBI switching power ratio =  73.50609572998704 %
-PAM4-MF switching power ratio =  74.43396792985499 %
-PAM4-Sort switching power ratio =  62.771004744460434 %
+PAM4-DBI switching power ratio =  91.52966983660022 %
+PAM4-MF switching power ratio =  92.68505477795856 %
+PAM4-Sort switching power ratio =  78.16235214936427 %
 
 
 
@@ -326,9 +326,9 @@ total number [00]:  92.94302215354249 %  /  [01]:  2.435948213172657 %  /  [10]:
 
 
 NRZ-DBI switching power ratio =  88.9095352886032 %
-PAM4-DBI switching power ratio =  73.59351540190242 %
-PAM4-MF switching power ratio =  74.55227029626286 %
-PAM4-Sort switching power ratio =  62.823469377742 %
+PAM4-DBI switching power ratio =  91.398137766294 %
+PAM4-MF switching power ratio =  92.58884609759622 %
+PAM4-Sort switching power ratio =  78.02247355335581 %
 
 
 
@@ -354,9 +354,9 @@ total number [00]:  80.5548046424452 %  /  [01]:  6.712487384659746 %  /  [10]: 
 
 
 NRZ-DBI switching power ratio =  89.05688395403385 %
-PAM4-DBI switching power ratio =  73.54234390901875 %
-PAM4-MF switching power ratio =  74.52942978252561 %
-PAM4-Sort switching power ratio =  62.82668194887751 %
+PAM4-DBI switching power ratio =  91.3958028905775 %
+PAM4-MF switching power ratio =  92.62251802006419 %
+PAM4-Sort switching power ratio =  78.07876026867345 %
 
 
 
@@ -382,9 +382,9 @@ total number [00]:  92.90279400311526 %  /  [01]:  2.4504315939771546 %  /  [10]
 
 
 NRZ-DBI switching power ratio =  88.99213962163603 %
-PAM4-DBI switching power ratio =  73.5194016168833 %
-PAM4-MF switching power ratio =  74.53263508967045 %
-PAM4-Sort switching power ratio =  62.79414489531271 %
+PAM4-DBI switching power ratio =  91.341854970618 %
+PAM4-MF switching power ratio =  92.60071484824579 %
+PAM4-Sort switching power ratio =  78.01659901859766 %
 
 
 
@@ -410,9 +410,9 @@ total number [00]:  24.95 %  /  [01]:  24.9275 %  /  [10]:  25.082500000000003 %
 
 
 NRZ-DBI switching power ratio =  92.61610758386242 %
-PAM4-DBI switching power ratio =  86.10737033666945 %
-PAM4-MF switching power ratio =  90.70063694267509 %
-PAM4-Sort switching power ratio =  78.28207461328475 %
+PAM4-DBI switching power ratio =  94.45819691767161 %
+PAM4-MF switching power ratio =  99.49692565679184 %
+PAM4-Sort switching power ratio =  85.87399185498712 %
 
 
 
