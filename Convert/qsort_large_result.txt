@@ -1,0 +1,29 @@
+********************* start experiment  15  *********************
+start experiment 15
+experiment  15 has  174167424 NRZ words and  87083712.0 PAM4 words
+######################### Result  15 #########################
+power_ratio_1 = 41.529445859105444 %
+power_ratio_2 = 49.75350710642812 %
+power_ratio_3 = 47.07835719969838 %
+power_ratio_4 = 41.24643939963401 %
+total number [00]:  310506230   /  [01]:  147862471   /  [10]:  122047072   /  [11]:  116253923 
+
+if we calculate as a percentage,
+total number [00]:  44.57007844360149 %  /  [01]:  21.224185844305765 %  /  [10]:  17.518642292142992 %  /  [11]:  16.68709341994976 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.98194005457654 %
+PAM4-DBI switching power ratio =  86.97538790082689 %
+PAM4-MF switching power ratio =  89.95586505418382 %
+PAM4-Sort switching power ratio =  74.42514262919799 %
+
+
+
+
+
+clear

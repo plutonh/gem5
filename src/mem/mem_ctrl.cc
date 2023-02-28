@@ -708,10 +708,10 @@ MemCtrl::accessAndRespond(PacketPtr pkt, Tick static_latency)
             youriCounterW += pkt->getSize();
         }
         DPRINTF(Flag_1, "mem_ctrl : %s, mem_pkt address: %#x, size: %d, readSize: %d, writeSize: %d\n",
-            memoryCmd,
-            pkt->getAddr(),pkt->getSize(), youriCounterR, youriCounterW);
+            memoryCmd, pkt->getAddr(), pkt->getSize(), youriCounterR, youriCounterW);
         DDUMP(Flag_1, pkt->getConstPtr<uint8_t>(), pkt->getSize());
         DDUMP(onlyData, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+        // DDUMP(onlyData, pkt->getConstPtr<uint8_t>(), 1);
         //YOURI_END
     } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
         nvm->access(pkt);

@@ -55,15 +55,25 @@ class Flag:
 
 
 # read files
-data_1_bin = open("/home/youri/project/gem5/DBI/DATA_input/basicmath_large_bin.txt","r")
-data_2_bin = open("/home/youri/project/gem5/DBI/DATA_input/basicmath_small_bin.txt","r")
-data_3_bin = open("/home/youri/project/gem5/DBI/DATA_input/bitcount_bitcnts_bin.txt","r")
-data_4_bin = open("/home/youri/project/gem5/DBI/DATA_input/qsort_large_bin.txt","r")
-data_5_bin = open("/home/youri/project/gem5/DBI/DATA_input/qsort_small_bin.txt","r")
-data_6_bin = open("/home/youri/project/gem5/DBI/DATA_input/susan_large_smoothing_bin.txt","r")
-data_7_bin = open("/home/youri/project/gem5/DBI/DATA_input/susan_small_smoothing_bin.txt","r")
-data_8_bin = open("/home/youri/project/gem5/DBI/DATA_input/FFT_bin.txt","r")
-data_random = open("/home/youri/project/gem5/DBI/DATA_input/random_data_10000.txt","r")
+# data_1_bin = open("/home/youri/project/gem5/DBI/DATA_input/basicmath_large_bin.txt","r")
+# data_2_bin = open("/home/youri/project/gem5/DBI/DATA_input/basicmath_small_bin.txt","r")
+# data_3_bin = open("/home/youri/project/gem5/DBI/DATA_input/bitcount_bitcnts_bin.txt","r")
+# data_4_bin = open("/home/youri/project/gem5/DBI/DATA_input/qsort_large_bin.txt","r")
+# data_5_bin = open("/home/youri/project/gem5/DBI/DATA_input/qsort_small_bin.txt","r")
+# data_6_bin = open("/home/youri/project/gem5/DBI/DATA_input/susan_large_smoothing_bin.txt","r")
+# data_7_bin = open("/home/youri/project/gem5/DBI/DATA_input/susan_small_smoothing_bin.txt","r")
+# data_8_bin = open("/home/youri/project/gem5/DBI/DATA_input/FFT_bin.txt","r")
+# data_random = open("/home/youri/project/gem5/DBI/DATA_input/random_data_10000.txt","r")
+
+# data_1_bin = open("/home/jonghyeon/gem5/mibench/automotive/basicmath/results/output_large.txt","r")
+# data_2_bin = open("/home/jonghyeon/gem5/mibench/automotive/basicmath/results/output_small.txt","r")
+# data_3_bin = open("/home/jonghyeon/gem5/mibench/automotive/bitcount_bitcnts_bin.txt","r")
+# data_4_bin = open("/home/jonghyeon/gem5/mibench/automotive/qsort/input_small.dat","r")
+# data_5_bin = open("/home/jonghyeon/gem5/mibench/automotive/qsort/input_large.dat","r")
+# data_6_bin = open("/home/jonghyeon/gem5/mibench/automotive/basicmath/susan_large_smoothing_bin.txt","r")
+# data_7_bin = open("/home/jonghyeon/gem5/mibench/automotive/basicmath/susan_small_smoothing_bin.txt","r")
+# data_8_bin = open("/home/jonghyeon/gem5/mibench/telecomm/FFT_bin.txt","r")
+data_random = open("/home/jonghyeon/gem5/DBE/random_data_10000.txt","r")
 
 def doExperiment(_file,_num):
     print('********************* start experiment ', _num, ' *********************')
@@ -157,7 +167,7 @@ def doExperiment(_file,_num):
     print("total number [00]: ", num_flag[0], "  /  [01]: ",  num_flag[1], "  /  [10]: ",  num_flag[2], "  /  [11]: ",  num_flag[3], "\n\n\n")
 
 
-doExperiment(data_1_bin,1)
+# doExperiment(data_1_bin,1)
 # doExperiment(data_2_bin,2)
 # doExperiment(data_3_bin,3)
 # doExperiment(data_4_bin,4)
@@ -165,19 +175,19 @@ doExperiment(data_1_bin,1)
 # doExperiment(data_6_bin,6)
 # doExperiment(data_7_bin,7)
 # doExperiment(data_8_bin,8)
-# doExperiment(data_random,9)
+doExperiment(data_random,9)
 
 
 
 
-data_1_bin.close()
-data_2_bin.close()
-data_3_bin.close()
-data_4_bin.close()
-data_5_bin.close()
-data_6_bin.close()
-data_7_bin.close()
-data_8_bin.close()
+# data_1_bin.close()
+# data_2_bin.close()
+# data_3_bin.close()
+# data_4_bin.close()
+# data_5_bin.close()
+# data_6_bin.close()
+# data_7_bin.close()
+# data_8_bin.close()
 data_random.close()
 
 print('clear')

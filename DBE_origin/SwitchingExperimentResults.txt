@@ -1,0 +1,421 @@
+********************* start experiment  1  *********************
+start experiment 1
+experiment  1 has  717248 NRZ words and  358624.0 PAM4 words
+######################### Result  1 #########################
+power_ratio_1 = 1.1182680169653785 %
+power_ratio_2 = 1.5422865733073288 %
+power_ratio_3 = 1.443704483574702 %
+power_ratio_4 = 1.2582172306200916 %
+total number [00]:  2802983   /  [01]:  24957   /  [10]:  20495   /  [11]:  20557 
+
+if we calculate as a percentage,
+total number [00]:  97.69922676675293 %  /  [01]:  0.8698874029624342 %  /  [10]:  0.7143623962701883 %  /  [11]:  0.7165234340144553 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  91.90992835209826 %
+PAM4-DBI switching power ratio =  91.06044463385294 %
+PAM4-MF switching power ratio =  93.1870161233038 %
+PAM4-Sort switching power ratio =  75.66872647205093 %
+
+
+
+
+
+********************* start experiment  2  *********************
+start experiment 2
+experiment  2 has  2918624 NRZ words and  1459312.0 PAM4 words
+######################### Result  2 #########################
+power_ratio_1 = 22.768854856128165 %
+power_ratio_2 = 30.367435853353747 %
+power_ratio_3 = 26.617214925147593 %
+power_ratio_4 = 24.29154332098421 %
+total number [00]:  7534131   /  [01]:  1259278   /  [10]:  1557110   /  [11]:  1323977 
+
+if we calculate as a percentage,
+total number [00]:  64.53495722641902 %  /  [01]:  10.786572713717149 %  /  [10]:  13.337706398631685 %  /  [11]:  11.340763661232142 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  91.15971568758106 %
+PAM4-DBI switching power ratio =  91.97595080950569 %
+PAM4-MF switching power ratio =  93.78776714604807 %
+PAM4-Sort switching power ratio =  80.72504572386072 %
+
+
+
+
+
+********************* start experiment  3  *********************
+start experiment 3
+experiment  3 has  59776 NRZ words and  29888.0 PAM4 words
+######################### Result  3 #########################
+power_ratio_1 = 35.64184456769771 %
+power_ratio_2 = 44.10447811495324 %
+power_ratio_3 = 40.529081919337884 %
+power_ratio_4 = 35.65561389716379 %
+total number [00]:  117890   /  [01]:  47873   /  [10]:  37593   /  [11]:  35748 
+
+if we calculate as a percentage,
+total number [00]:  49.30490497858672 %  /  [01]:  20.021831504282655 %  /  [10]:  15.722447135974305 %  /  [11]:  14.950816381156319 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.57625648950007 %
+PAM4-DBI switching power ratio =  88.87670662803836 %
+PAM4-MF switching power ratio =  92.41640923859947 %
+PAM4-Sort switching power ratio =  77.15079149126704 %
+
+
+
+
+
+********************* start experiment  4  *********************
+start experiment 4
+experiment  4 has  67904 NRZ words and  33952.0 PAM4 words
+######################### Result  4 #########################
+power_ratio_1 = 37.4175963665449 %
+power_ratio_2 = 45.850041843922554 %
+power_ratio_3 = 42.31831674105499 %
+power_ratio_4 = 37.08030764000406 %
+total number [00]:  128873   /  [01]:  57340   /  [10]:  43363   /  [11]:  42040 
+
+if we calculate as a percentage,
+total number [00]:  47.44676307728558 %  /  [01]:  21.110685673892554 %  /  [10]:  15.964817978322337 %  /  [11]:  15.477733270499527 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.28723444398324 %
+PAM4-DBI switching power ratio =  88.77298780322164 %
+PAM4-MF switching power ratio =  91.67821150137274 %
+PAM4-Sort switching power ratio =  76.75617309102716 %
+
+
+
+
+
+********************* start experiment  5  *********************
+start experiment 5
+experiment  5 has  74912 NRZ words and  37456.0 PAM4 words
+######################### Result  5 #########################
+power_ratio_1 = 14.719841595248981 %
+power_ratio_2 = 19.449452719756028 %
+power_ratio_3 = 18.167090678009224 %
+power_ratio_4 = 15.838351561961892 %
+total number [00]:  222231   /  [01]:  31497   /  [10]:  24026   /  [11]:  21894 
+
+if we calculate as a percentage,
+total number [00]:  74.16401911576249 %  /  [01]:  10.51133329773601 %  /  [10]:  8.018074540794533 %  /  [11]:  7.306573045706963 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.69456378336321 %
+PAM4-DBI switching power ratio =  88.72406369035023 %
+PAM4-MF switching power ratio =  91.45787493789503 %
+PAM4-Sort switching power ratio =  75.31880663401736 %
+
+
+
+
+
+********************* start experiment  6  *********************
+start experiment 6
+experiment  6 has  305280 NRZ words and  152640.0 PAM4 words
+######################### Result  6 #########################
+power_ratio_1 = 3.218341792365812 %
+power_ratio_2 = 4.430393287275901 %
+power_ratio_3 = 4.140693732568868 %
+power_ratio_4 = 3.608717747773997 %
+total number [00]:  1141834   /  [01]:  32209   /  [10]:  24614   /  [11]:  22463 
+
+if we calculate as a percentage,
+total number [00]:  93.50710822851153 %  /  [01]:  2.637660508385744 %  /  [10]:  2.015690513626834 %  /  [11]:  1.839540749475891 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.69803623631228 %
+PAM4-DBI switching power ratio =  88.64758257981258 %
+PAM4-MF switching power ratio =  91.30720612659186 %
+PAM4-Sort switching power ratio =  75.17761579627248 %
+
+
+
+
+
+********************* start experiment  7  *********************
+start experiment 7
+experiment  7 has  108000 NRZ words and  54000.0 PAM4 words
+######################### Result  7 #########################
+power_ratio_1 = 9.718829446588916 %
+power_ratio_2 = 13.058316557631343 %
+power_ratio_3 = 12.21435424006672 %
+power_ratio_4 = 10.645928445616548 %
+total number [00]:  353975   /  [01]:  31763   /  [10]:  24165   /  [11]:  22097 
+
+if we calculate as a percentage,
+total number [00]:  81.9386574074074 %  /  [01]:  7.352546296296296 %  /  [10]:  5.59375 %  /  [11]:  5.115046296296296 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.77778709839778 %
+PAM4-DBI switching power ratio =  88.67774210933358 %
+PAM4-MF switching power ratio =  91.40520655153843 %
+PAM4-Sort switching power ratio =  75.29465520069364 %
+
+
+
+
+
+********************* start experiment  8  *********************
+start experiment 8
+experiment  8 has  304928 NRZ words and  152464.0 PAM4 words
+######################### Result  8 #########################
+power_ratio_1 = 3.192239964472131 %
+power_ratio_2 = 4.393886927719789 %
+power_ratio_3 = 4.109408151724018 %
+power_ratio_4 = 3.5813802301647284 %
+total number [00]:  1141106   /  [01]:  31973   /  [10]:  24361   /  [11]:  22272 
+
+if we calculate as a percentage,
+total number [00]:  93.5553638891804 %  /  [01]:  2.621356516948263 %  /  [10]:  1.9972747665022563 %  /  [11]:  1.8260048273690839 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.72781804548863 %
+PAM4-DBI switching power ratio =  88.6195615475073 %
+PAM4-MF switching power ratio =  91.33456742691492 %
+PAM4-Sort switching power ratio =  75.2599164076235 %
+
+
+
+
+
+********************* start experiment  9  *********************
+start experiment 9
+experiment  9 has  859232 NRZ words and  429616.0 PAM4 words
+######################### Result  9 #########################
+power_ratio_1 = 1.0973204272088006 %
+power_ratio_2 = 1.5437618939804236 %
+power_ratio_3 = 1.400420520358443 %
+power_ratio_4 = 1.2289310426934001 %
+total number [00]:  3357497   /  [01]:  27164   /  [10]:  26421   /  [11]:  25846 
+
+if we calculate as a percentage,
+total number [00]:  97.68889543219991 %  /  [01]:  0.7903569699452535 %  /  [10]:  0.7687388272317605 %  /  [11]:  0.752008770623068 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  92.35333259398914 %
+PAM4-DBI switching power ratio =  94.91363666913144 %
+PAM4-MF switching power ratio =  95.82498823845718 %
+PAM4-Sort switching power ratio =  79.30640500033667 %
+
+
+
+
+
+********************* start experiment  10  *********************
+start experiment 10
+experiment  10 has  2122592 NRZ words and  1061296.0 PAM4 words
+######################### Result  10 #########################
+power_ratio_1 = 15.304423657417713 %
+power_ratio_2 = 20.81336065452815 %
+power_ratio_3 = 18.271285586914352 %
+power_ratio_4 = 16.6601888365279 %
+total number [00]:  6293555   /  [01]:  675360   /  [10]:  809958   /  [11]:  711495 
+
+if we calculate as a percentage,
+total number [00]:  74.1258211658199 %  /  [01]:  7.954425532556423 %  /  [10]:  9.539727842185403 %  /  [11]:  8.380025459438272 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  91.25655977049276 %
+PAM4-DBI switching power ratio =  91.98300552204948 %
+PAM4-MF switching power ratio =  93.34844468112063 %
+PAM4-Sort switching power ratio =  80.31886641738393 %
+
+
+
+
+
+********************* start experiment  11  *********************
+start experiment 11
+experiment  11 has  77728 NRZ words and  38864.0 PAM4 words
+######################### Result  11 #########################
+power_ratio_1 = 15.251657447727204 %
+power_ratio_2 = 20.720709512970135 %
+power_ratio_3 = 18.57963878270206 %
+power_ratio_4 = 16.35845051353378 %
+total number [00]:  225738   /  [01]:  29365   /  [10]:  28979   /  [11]:  26830 
+
+if we calculate as a percentage,
+total number [00]:  72.60511012762454 %  /  [01]:  9.444794668587896 %  /  [10]:  9.32064378344998 %  /  [11]:  8.629451420337588 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.95520856492962 %
+PAM4-DBI switching power ratio =  91.52966983660022 %
+PAM4-MF switching power ratio =  92.68505477795856 %
+PAM4-Sort switching power ratio =  78.16235214936427 %
+
+
+
+
+
+********************* start experiment  12  *********************
+start experiment 12
+experiment  12 has  308032 NRZ words and  154016.0 PAM4 words
+######################### Result  12 #########################
+power_ratio_1 = 3.3740608222686577 %
+power_ratio_2 = 4.766139246280178 %
+power_ratio_3 = 4.272970090718314 %
+power_ratio_4 = 3.762586487175551 %
+total number [00]:  1145177   /  [01]:  30014   /  [10]:  29560   /  [11]:  27377 
+
+if we calculate as a percentage,
+total number [00]:  92.94302215354249 %  /  [01]:  2.435948213172657 %  /  [10]:  2.3991013920631623 %  /  [11]:  2.221928241221691 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.9095352886032 %
+PAM4-DBI switching power ratio =  91.398137766294 %
+PAM4-MF switching power ratio =  92.58884609759622 %
+PAM4-Sort switching power ratio =  78.02247355335581 %
+
+
+
+
+
+********************* start experiment  13  *********************
+start experiment 13
+experiment  13 has  110976 NRZ words and  55488.0 PAM4 words
+######################### Result  13 #########################
+power_ratio_1 = 10.179158142708475 %
+power_ratio_2 = 14.051306530648711 %
+power_ratio_3 = 12.606636517923784 %
+power_ratio_4 = 11.102991886486084 %
+total number [00]:  357586   /  [01]:  29797   /  [10]:  29319   /  [11]:  27202 
+
+if we calculate as a percentage,
+total number [00]:  80.5548046424452 %  /  [01]:  6.712487384659746 %  /  [10]:  6.604806444636678 %  /  [11]:  6.127901528258362 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  89.05688395403385 %
+PAM4-DBI switching power ratio =  91.3958028905775 %
+PAM4-MF switching power ratio =  92.62251802006419 %
+PAM4-Sort switching power ratio =  78.07876026867345 %
+
+
+
+
+
+********************* start experiment  14  *********************
+start experiment 14
+experiment  14 has  308160 NRZ words and  154080.0 PAM4 words
+######################### Result  14 #########################
+power_ratio_1 = 3.396028279933306 %
+power_ratio_2 = 4.795009375934542 %
+power_ratio_3 = 4.300008096080973 %
+power_ratio_4 = 3.786608340009786 %
+total number [00]:  1145157   /  [01]:  30205   /  [10]:  29697   /  [11]:  27581 
+
+if we calculate as a percentage,
+total number [00]:  92.90279400311526 %  /  [01]:  2.4504315939771546 %  /  [10]:  2.4092192367601246 %  /  [11]:  2.2375551661474558 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  88.99213962163603 %
+PAM4-DBI switching power ratio =  91.341854970618 %
+PAM4-MF switching power ratio =  92.60071484824579 %
+PAM4-Sort switching power ratio =  78.01659901859766 %
+
+
+
+
+
+********************* start experiment  15  *********************
+start experiment 15
+experiment  15 has  10000 NRZ words and  5000.0 PAM4 words
+######################### Result  15 #########################
+power_ratio_1 = 72.82554298868645 %
+power_ratio_2 = 82.97907195806194 %
+power_ratio_3 = 73.85109645829623 %
+power_ratio_4 = 67.07257693865529 %
+total number [00]:  9980   /  [01]:  9971   /  [10]:  10033   /  [11]:  10016 
+
+if we calculate as a percentage,
+total number [00]:  24.95 %  /  [01]:  24.9275 %  /  [10]:  25.082500000000003 %  /  [11]:  25.040000000000003 %
+
+
+
+******************  SWITCHING POWER  ******************
+
+
+
+NRZ-DBI switching power ratio =  92.61610758386242 %
+PAM4-DBI switching power ratio =  94.45819691767161 %
+PAM4-MF switching power ratio =  99.49692565679184 %
+PAM4-Sort switching power ratio =  85.87399185498712 %
+
+
+
+
+
+clear
